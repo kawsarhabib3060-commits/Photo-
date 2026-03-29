@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM FAILURE!</title>
+    <style>
+        body { background-color: black; color: #ff0000; font-family: 'Courier New', Courier, monospace; text-align: center; padding-top: 50px; overflow: hidden; }
+        .blink { animation: blinker 0.15s linear infinite; font-size: 40px; font-weight: bold; }
+        @keyframes blinker { 50% { opacity: 0; } }
+        #log { margin-top: 20px; font-size: 18px; color: #00ff00; }
+        #warning { color: yellow; margin-top: 30px; font-size: 22px; display: none; border: 2px solid red; padding: 10px; }
+    </style>
+</head>
+<body onclick="startPrank()">
+    <div class="blink">SYSTEM HACKED!</div>
+    <div style="font-size: 20px; margin-top: 10px;">Managed by Kawsar Ahmed</div>
+    
+    <div id="log">স্ক্রিনে টাচ করুন...</div>
+    <div id="warning">
+        তাতাড়ি মাফ চাও!<br>
+        নয়তো ফোন আর চলবে না!
+    </div>
+
+    <script>
+        function startPrank() {
+            let count = 0;
+            let logDiv = document.getElementById('log');
+            let warnDiv = document.getElementById('warning');
+            
+            logDiv.innerText = "ডাটা চুরি হচ্ছে: 0%";
+            
+            let interval = setInterval(() => {
+                count++;
+                logDiv.innerText = "আপনার সব ফাইল ডিলিট হচ্ছে: " + count + "%";
+                if(count >= 100) {
+                    clearInterval(interval);
+                    logDiv.style.color = "red";
+                    logDiv.innerText = "সিস্টেম লক করা হয়েছে!";
+                    warnDiv.style.display = "block";
+                }
+            }, 60);
+        }
+    </script>
+</body>
+</html>
